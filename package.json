@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "test",
+    "doc": "cd front-end && npm run jsdoc && cd..",
     "server": " cd backend && yarn dev && cd ..",
     "client": "set PORT=3001&& npm start --prefix front-end",
     "dev": "concurrently \"npm run server\" \"npm run client\""
