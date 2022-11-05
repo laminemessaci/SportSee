@@ -1,0 +1,19 @@
+{
+  "name": "sport-see",
+  "version": "1.0.0",
+  "description": "P12 Openclassrooms",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laminemessaci/SportSee.git"
+  },
+  "author": "Lamine Messaci",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/laminemessaci/SportSee/issues"
+  },
+  "homepage": "https://github.com/laminemessaci/SportSee#readme"
+}
