@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: screens/Dashboard/index.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: screens/Dashboard/index.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// @ts-nocheck
+import React, { useEffect, useState } from 'react';
+import { AverageSessionsChart } from '../../components/AverageSessions';
+import DailyActivity from '../../components/DailyActivity';
+import { Header } from '../../components/Header';
+import Macros from '../../components/Macros';
+import RadarActivities from '../../components/RadarActivities/index.jsx';
+import Score from '../../components/ScoreUser';
+import UserMessage from '../../components/UserMessage/index.js';
+import VerticalNavBar from '../../components/VerticalNavBar';
+import { user_message } from '../../constants/index.js';
+import { getAllDataMocked } from '../../services/mockedAPI/index.js';
+import { useNavigate, useParams } from 'react-router';
+import {
+  ChartsGrid,
+  ContentGrid,
+  DashboardContainer,
+  MainChart,
+  MainContent,
+} from './index.style.js';
+import { useSportSeeApi } from '../../services/hook/index.js';
+import Loader from './../../components/Loader/index';
+
+const initialState = {
+  isLoading: true,
+  error: null,
+  isDataLoaded: false,
+  data: null,
+};
+
+/**
+ * @file User Dashboard page
+ */
+
+function Dashboard() {
+  const [state, setState] = useState(initialState);
+
+  const { userId, api } = useParams();
+  console.log('UseParams ::', api, userId);
+
+  const {
+    userApi,
+    sessionsApi,
+    performancesApi,
+    averageApi,
+    isApiLoading,
+    errorApi,
+  } = useSportSeeApi(userId);
+  // console.log('userApi :', userApi);
+  // console.log('sessionsApi :', sessionsApi);
+  // console.log('pefApi :', performancesApi);
+  // console.log('averageApi :', averageApi);
+  // console.log('isApiLoading  ', isApiLoading, errorApi);
+
+  // console.log('path: ', window.location.href);
+
+  const navigate = useNavigate();
+  if (!['12', '18'].includes(userId)) {
+    navigate('/Page404');
+  }
+
+  const { isLoading, isDataLoaded, data: mockedData, error } = state;
+
+  useEffect(() => {
+    async function getMockedData() {
+      try {
+        const userData = await getAllDataMocked();
+
+        setState({
+          ...state,
+          data: userData,
+          isDataLoaded: true,
+          error: '',
+          isLoading: false,
+        });
+      } catch (error) {
+        setState({ ...state, error, isLoading: false });
+      }
+    }
+    getMockedData();
+    setState({ ...state, isLoading: false });
+    console.log('state: ', state);
+  }, []);
+
+  if (isLoading || isApiLoading) {
+    return (
+      &lt;>
+        &lt;Loader
+          type={'spinningBubbles'}
+          color={'#ff6060'}
+          width={200}
+          height={200}
+        />
+      &lt;/>
+    );
+  }
+  if (errorApi || error) {
+    return (
+      &lt;div>
+        &lt;Header />
+        &lt;DashboardContainer>
+          &lt;VerticalNavBar />
+          &lt;MainContent>
+            &lt;UserMessage
+              userId={userId}
+              message={
+                api ? errorApi : ' ): quelque chose ne tourne pas rond !'
+              }
+              isLoading={isLoading}
+              data={mockedData}
+            />
+          &lt;/MainContent>
+        &lt;/DashboardContainer>
+      &lt;/div>
+    );
+  }
+  if (isDataLoaded) {
+    return (
+      &lt;>
+        &lt;Header />
+        &lt;DashboardContainer>
+          &lt;VerticalNavBar />
+          &lt;MainContent>
+            &lt;UserMessage
+              userId={userId}
+              message={user_message}
+              isLoading={isLoading}
+              data={mockedData}
+              api={api}
+              userApi={userApi}
+            />
+            &lt;ContentGrid>
+              &lt;ChartsGrid>
+                &lt;MainChart>
+                  &lt;DailyActivity
+                    userId={userId}
+                    data={mockedData}
+                    dailyActivityApi={sessionsApi?.sessions}
+                    api={api}
+                  />
+                &lt;/MainChart>
+                &lt;AverageSessionsChart
+                  userId={userId}
+                  data={mockedData}
+                  averageApi={averageApi}
+                  api={api}
+                />
+                &lt;RadarActivities
+                  userId={userId}
+                  data={mockedData}
+                  performancesApi={performancesApi}
+                  api={api}
+                />
+                &lt;Score
+                  userId={userId}
+                  data={mockedData}
+                  userApiScore={userApi.score}
+                  api={api}
+                />
+              &lt;/ChartsGrid>
+              &lt;Macros
+                userId={userId}
+                data={mockedData.userMainData}
+                keyData={userApi?.keyData}
+                api={api}
+              />
+            &lt;/ContentGrid>
+          &lt;/MainContent>
+        &lt;/DashboardContainer>
+      &lt;/>
+    );
+  }
+}
+
+export default Dashboard;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Activity.html">Activity</a></li><li><a href="ActivityChart.html">ActivityChart</a></li><li><a href="Score.html">Score</a></li><li><a href="SessionsAverage.html">SessionsAverage</a></li><li><a href="User.html">User</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AverageSessionsChart">AverageSessionsChart</a></li><li><a href="global.html#capitalizesFirstLetter">capitalizesFirstLetter</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#DailyActivity">DailyActivity</a></li><li><a href="global.html#formatData">formatData</a></li><li><a href="global.html#getAllDataMocked">getAllDataMocked</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#IconComponent">IconComponent</a></li><li><a href="global.html#Loader">Loader</a></li><li><a href="global.html#Macros">Macros</a></li><li><a href="global.html#Navigation">Navigation</a></li><li><a href="global.html#RadarActivities">RadarActivities</a></li><li><a href="global.html#ScoreUser">ScoreUser</a></li><li><a href="global.html#toFrenchIntegerFormat">toFrenchIntegerFormat</a></li><li><a href="global.html#translateToFr">translateToFr</a></li><li><a href="global.html#UserMessage">UserMessage</a></li><li><a href="global.html#UserProfile">UserProfile</a></li><li><a href="global.html#useSportSeeApi">useSportSeeApi</a></li><li><a href="global.html#VerticalNavBar">VerticalNavBar</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Sat Nov 05 2022 18:52:59 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

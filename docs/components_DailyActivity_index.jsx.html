@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: components/DailyActivity/index.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: components/DailyActivity/index.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>// @ts-nocheck
+import PropTypes from 'prop-types';
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
+
+import {
+  ColorBullet,
+  DailyActivityContainer,
+  DailyActivityLegend,
+  DailyActivityTitle,
+  LegendDetail,
+} from './index.styles.js';
+import { theme } from '../../constants/index.js';
+import CustomTooltip from '../CustomTooltip/index.js';
+import { Activity } from '../../model/DailyActivity.js';
+import React from 'react';
+
+/**
+ * Component for showing  Daily Activities
+ *
+ * @component DailyActivity
+ * @param   {string}  userId  User Id
+ * @param   {Object}  data   all User data
+ * @param   {boolean} api   is Api available?
+ * @param  {Object}  dailyActivityApi   User data from Api
+ * @return {JSX.Element}
+ */
+function DailyActivity({ userId, data, api = false, dailyActivityApi }) {
+  const dailyActivity = new Activity(userId, data?.userActivities)._activities;
+  const dailyActivitiesApi = new Activity(
+    userId,
+    data?.userActivities,
+    dailyActivityApi
+  )._activitiesApi;
+
+  return (
+    &lt;DailyActivityContainer>
+      &lt;DailyActivityTitle>Activité quotidienne&lt;/DailyActivityTitle>
+
+      &lt;DailyActivityLegend>
+        &lt;LegendDetail>
+          &lt;ColorBullet background={`${theme.colors.neutral800}`}>&lt;/ColorBullet>
+          Poids (kg)
+        &lt;/LegendDetail>
+        &lt;LegendDetail>
+          &lt;ColorBullet background={`${theme.colors.primary500}`}>&lt;/ColorBullet>
+          Calories brûlées (kCal)
+        &lt;/LegendDetail>
+      &lt;/DailyActivityLegend>
+
+      &lt;ResponsiveContainer width="100%" height="100%">
+        &lt;BarChart
+          data={api ? dailyActivitiesApi : dailyActivity}
+          margin={{ top: 80, right: 48, bottom: 32, left: 48 }}
+          barGap={8}
+          barCategoryGap="35%"
+        >
+          &lt;CartesianGrid
+            strokeDasharray="3 3"
+            vertical={false}
+            stroke={`${theme.colors.neutral200}`}
+          />
+          &lt;XAxis
+            dataKey="day"
+            dy={16}
+            padding={{ left: -48, right: -48 }}
+            stroke={`${theme.colors.neutral400}`}
+            tickLine={false}
+            tick={{ fontSize: 14, fontWeight: 500 }}
+          />
+          &lt;YAxis
+            yAxisId="kg"
+            dataKey="kilogram"
+            domain={['dataMin - 1', 'dataMax + 2']}
+            allowDecimals={false}
+            dx={48}
+            orientation="right"
+            stroke={`${theme.colors.neutral400}`}
+            axisLine={false}
+            tickLine={false}
+          />
+          &lt;YAxis
+            yAxisId="cal"
+            dataKey="calories"
+            domain={[0, 'dataMax + 50']}
+            hide={true}
+          />
+          &lt;Bar
+            yAxisId="kg"
+            dataKey="kilogram"
+            maxBarSize={8}
+            fill={`${theme.colors.neutral800}`}
+            radius={[50, 50, 0, 0]}
+          />
+          &lt;Bar
+            yAxisId="cal"
+            dataKey="calories"
+            maxBarSize={8}
+            fill={`${theme.colors.primary500}`}
+            radius={[50, 50, 0, 0]}
+          />
+          &lt;Tooltip
+            wrapperStyle={{ outlineStyle: 'none' }}
+            content={&lt;CustomTooltip />}
+            cursor={{
+              fill: 'rgba(0, 0, 0, 0.1)',
+            }}
+          />
+        &lt;/BarChart>
+      &lt;/ResponsiveContainer>
+    &lt;/DailyActivityContainer>
+  );
+}
+
+DailyActivity.propTypes = {
+  userId: PropTypes.string.isRequired,
+  data: PropTypes.object.isRequired,
+  api: PropTypes.bool,
+  dailyActivityApi: PropTypes.object,
+};
+
+export default DailyActivity;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Activity.html">Activity</a></li><li><a href="ActivityChart.html">ActivityChart</a></li><li><a href="Score.html">Score</a></li><li><a href="SessionsAverage.html">SessionsAverage</a></li><li><a href="User.html">User</a></li></ul><h3>Global</h3><ul><li><a href="global.html#AverageSessionsChart">AverageSessionsChart</a></li><li><a href="global.html#capitalizesFirstLetter">capitalizesFirstLetter</a></li><li><a href="global.html#CustomTooltip">CustomTooltip</a></li><li><a href="global.html#DailyActivity">DailyActivity</a></li><li><a href="global.html#formatData">formatData</a></li><li><a href="global.html#getAllDataMocked">getAllDataMocked</a></li><li><a href="global.html#Header">Header</a></li><li><a href="global.html#IconComponent">IconComponent</a></li><li><a href="global.html#Loader">Loader</a></li><li><a href="global.html#Macros">Macros</a></li><li><a href="global.html#Navigation">Navigation</a></li><li><a href="global.html#RadarActivities">RadarActivities</a></li><li><a href="global.html#ScoreUser">ScoreUser</a></li><li><a href="global.html#toFrenchIntegerFormat">toFrenchIntegerFormat</a></li><li><a href="global.html#translateToFr">translateToFr</a></li><li><a href="global.html#UserMessage">UserMessage</a></li><li><a href="global.html#UserProfile">UserProfile</a></li><li><a href="global.html#useSportSeeApi">useSportSeeApi</a></li><li><a href="global.html#VerticalNavBar">VerticalNavBar</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Sat Nov 05 2022 18:52:59 GMT+0100 (heure normale d’Europe centrale)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
