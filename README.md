@@ -29,9 +29,13 @@ git clone https://github.com/laminemessaci/SportSee.git
 
 ```bash
 # with NPM
-npm install
-# with Yarn
-yarn
+cd front-end && npm install && cd..    
+cd backend && npm i && cd..     
+
+# with YARN
+cd front-end && yarn && cd..    
+cd backend && yarn && cd..   
+ 
 ```
 
 - Start the application
@@ -44,27 +48,27 @@ yarn dev
 
 ### Added dependencies
 
- "@testing-library/jest-dom": "^5.16.5",
-    "@testing-library/react": "^13.4.0",
-    "@testing-library/user-event": "^13.5.0",
-    "axios": "^1.1.2",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-loading": "^2.0.3",
-    "react-router": "^6.4.2",
-    "react-router-dom": "^6.4.2",
-    "react-scripts": "5.0.1",
-    "react-switch": "^7.0.0",
-    "recharts": "^2.1.14",
-    "styled-components": "^5.3.0",
-    "web-vitals": "^2.1.4"
+ "@testing-library/jest-dom": "^5.16.5"  
+    "@testing-library/react": "^13.4.0"  
+    "@testing-library/user-event": "^13.5.0"  
+    "axios": "^1.1.2"     
+    "react": "^18.2.0"      
+    "react-dom": "^18.2.0"       
+    "react-loading": "^2.0.3"      
+    "react-router": "^6.4.2"          
+    "react-router-dom": "^6.4.2"       
+    "react-scripts": "5.0.1"       
+    "react-switch": "^7.0.0"     
+    "recharts": "^2.1.14"      
+    "styled-components": "^5.3.0"     
+    "web-vitals": "^2.1.4"    
 
 ---
 dev dependencies:
 
-"jsdoc": "^3.6.11",
-"stylelint": "13.13.1",
-"stylelint-config-standard": "22.0.0"
+"jsdoc": "^3.6.11"     
+"stylelint": "13.13.1"       
+"stylelint-config-standard": "22.0.0"         
 
 
 ### N.B:
