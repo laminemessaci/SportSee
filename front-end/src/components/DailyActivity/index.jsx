@@ -122,8 +122,8 @@ function DailyActivity({ userId, data, api = false, dailyActivityApi }) {
 DailyActivity.propTypes = {
   userId: PropTypes.string.isRequired,
   data: PropTypes.object.isRequired,
-  api: PropTypes.bool,
-  dailyActivityApi: PropTypes.object,
+  api: PropTypes.string,
+  dailyActivityApi: PropTypes.array,
 };
 
 export default DailyActivity;

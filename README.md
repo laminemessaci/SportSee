@@ -1,9 +1,9 @@
 # SportSee
 
 - ![Author](<https://img.shields.io/badge/Author-Lamine MESSACI-">)
-- ![GitHub repo size](<https://img.shields.io/github/repo-size/laminemessaci/P12_SportSee>)  
-- ![GitHub top language](https://img.shields.io/github/languages/top/laminemessaci/P12_SportSee)
-- ![GitHub language count](https://img.shields.io/github/languages/count/laminemessaci/P12_SportSee)
+- ![GitHub repo size](<https://img.shields.io/github/repo-size/laminemessaci/SportSee>)  
+- ![GitHub top language](https://img.shields.io/github/languages/top/laminemessaci/SportSee)
+- ![GitHub language count](https://img.shields.io/github/languages/count/laminemessaci/SportSee)
 
 ## Frontend
 
@@ -22,7 +22,7 @@ This repo contains all the source code to run the application of the sports anal
 - Clone this repo on your computer:
 
 ````bash
-git clone https://github.com/laminemessaci/P12_SportSee.git
+git clone https://github.com/laminemessaci/SportSee.git
 ````
 
 - Package installations after cloning.
@@ -46,21 +46,21 @@ yarn start
 
 ### Added dependencies
 
-- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/P12_SportSee/react)
-- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/P12_SportSee/styled-components)
-- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/P12_SportSee/react-router-dom)
-- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/P12_SportSee/recharts?label=Rechart)
-- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/P12_SportSee/axios)
-- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/P12_SportSee/recharts)
-- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/P12_SportSee/react-router)
+- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/SportSee/react)
+- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/SportSee/styled-components)
+- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/SportSee/react-router-dom)
+- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/SportSee/recharts?label=Rechart)
+- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/SportSee/axios)
+- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/SportSee/recharts)
+- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/SportSee/react-router)
   
 
 ---
 dev dependencies:
 
-- ![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/P12_SportSee/dev/jsdoc)
+- ![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/SportSee/dev/jsdoc)
 - ![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/P12_SportSee/dev/stylelint)
-- ![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/P12_SportSee/dev/stylelint-config-standard) 
+- ![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/SportSee/dev/stylelint-config-standard) 
 
 
 ### N.B:
