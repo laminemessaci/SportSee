@@ -46,7 +46,7 @@ yarn start
 
 ### Added dependencies
 
-- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/SportSee/react)
+- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/SportSee)
 - ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/SportSee/styled-components)
 - ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/SportSee/react-router-dom)
 - ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/SportSee/recharts?label=Rechart)
