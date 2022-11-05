@@ -22,45 +22,53 @@ This repo contains all the source code to run the application of the sports anal
 - Clone this repo on your computer:
 
 ````bash
-git clone https://github.com/laminemessaci/P12_SportSee.git
+git clone https://github.com/laminemessaci/SportSee.git
 ````
 
 - Package installations after cloning.
 
 ```bash
 # with NPM
-npm install
-# with Yarn
-yarn
+cd front-end && npm install && cd..    
+cd backend && npm i && cd..     
+
+# with YARN
+cd front-end && yarn && cd..    
+cd backend && yarn && cd..   
+ 
 ```
 
 - Start the application
 
 ```bash
-npm run start
-# or
-npm start
+npm run dev
 # with Yarn
-yarn start
+yarn dev
 ```
 
 ### Added dependencies
 
-- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/SportSee)
-- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/SportSee/styled-components)
-- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/SportSee/react-router-dom)
-- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/SportSee/recharts?label=Rechart)
-- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/SportSee/axios)
-- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/SportSee/recharts)
-- ![GitHub package.json dependency version (prod)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/SportSee/react-router)
-  
+ "@testing-library/jest-dom": "^5.16.5"  
+    "@testing-library/react": "^13.4.0"  
+    "@testing-library/user-event": "^13.5.0"  
+    "axios": "^1.1.2"     
+    "react": "^18.2.0"      
+    "react-dom": "^18.2.0"       
+    "react-loading": "^2.0.3"      
+    "react-router": "^6.4.2"          
+    "react-router-dom": "^6.4.2"       
+    "react-scripts": "5.0.1"       
+    "react-switch": "^7.0.0"     
+    "recharts": "^2.1.14"      
+    "styled-components": "^5.3.0"     
+    "web-vitals": "^2.1.4"    
 
 ---
 dev dependencies:
 
-- ![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/SportSee/dev/jsdoc)
-- ![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/SportSee/dev/stylelint)
-- ![GitHub package.json dependency version (dev dep on branch)](https://img.shields.io/github/package-json/dependency-version/laminemessaci/SportSee/dev/stylelint-config-standard) 
+"jsdoc": "^3.6.11"     
+"stylelint": "13.13.1"       
+"stylelint-config-standard": "22.0.0"         
 
 
 ### N.B:
