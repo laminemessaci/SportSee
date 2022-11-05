@@ -4,7 +4,10 @@
   "description": "P12 Openclassrooms",
   "main": "index.js",
   "scripts": {
-    "test": "test"
+    "test": "test",
+    "server": " cd backend && yarn dev && cd ..",
+    "client": "set PORT=3001&& npm start --prefix front-end",
+    "dev": "concurrently \"npm run server\" \"npm run client\""
   },
   "repository": {
     "type": "git",
