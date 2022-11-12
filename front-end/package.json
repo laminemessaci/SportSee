@@ -45,6 +45,7 @@
     ]
   },
   "devDependencies": {
+    "jest-watch-typeahead": "^0.6.5",
     "jsdoc": "^3.6.11",
     "stylelint": "13.13.1",
     "stylelint-config-standard": "22.0.0"

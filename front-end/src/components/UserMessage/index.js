@@ -29,7 +29,7 @@ function UserMessage({
     <>
       <Title>
         Bonjour{' '}
-        <FirstName>
+        <FirstName data-testid="first-name">
           {!isLoading && api ? userApi?.userInfos?.firstName : firstName}
         </FirstName>
       </Title>

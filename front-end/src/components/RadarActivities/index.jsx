@@ -28,7 +28,7 @@ function RadarActivities({ userId, data, api = false, performancesApi }) {
   const performances_Api = new ActivityChart(userId, data, performancesApi)
     ._activitiesApi;
 
-  console.log('Performances ==> ', performances_Api);
+  console.log('Performances ==> '  , performances_Api);
   return (
     <RadarContainer>
       <ResponsiveContainer width="100%" height="100%">
