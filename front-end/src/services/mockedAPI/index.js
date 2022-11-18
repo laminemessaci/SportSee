@@ -6,8 +6,9 @@ const data = '/mockedData.json';
  *
  * @return  {Promise<Object>}  data promise
  */
-export const getAllDataMocked = () => {
-  return axios.get(data).then((response) => response.data);
+export const getAllDataMocked = async () => {
+  const response = await axios.get(data);
+  return response.data;
 };
 
 export const getDataByUserId = (userId, data) => {

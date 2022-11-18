@@ -1,7 +1,8 @@
 // @ts-nocheck
-import React, { useEffect, useState } from 'react';
+import React, { Suspense, useEffect, useState } from 'react';
 import ReactLoading from 'react-loading';
 import Switch from 'react-switch';
+import { useLoaderData, defer, Await } from 'react-router-dom';
 
 import { getAllDataMocked } from '../../services/mockedAPI/index.js';
 
@@ -18,15 +19,8 @@ import {
 } from './index.style.js';
 import Loader from '../../components/Loader/index.js';
 
-const initialState = {
-  isLoading: true,
-  error: null,
-  data: null,
-};
 const Home = () => {
-  const [state, setState] = useState(initialState);
-
-  const { isLoading, data } = state;
+  const data = useLoaderData();
 
   const [checked, setChecked] = useState(false);
 
@@ -34,41 +28,8 @@ const Home = () => {
     setChecked(prev, !prev);
   };
 
-  useEffect(() => {
-    async function getMockedData() {
-      try {
-        const userData = await getAllDataMocked();
-
-        setState({
-          ...state,
-          data: userData,
-
-          error: '',
-          isLoading: false,
-        });
-      } catch (error) {
-        setState({ ...state, error, isLoading: false });
-      }
-    }
-    getMockedData();
-  }, []);
-
-  if (isLoading) {
-    return (
-      <>
-        <Loader
-          type={'spinningBubbles'}
-          color={'#ff6060'}
-          width={200}
-          height={200}
-        />
-      </>
-    );
-  }
-
   return (
     <>
-      <Header />
       <DashboardContainer>
         <VerticalNavBar />
         <MainContent>
@@ -82,15 +43,33 @@ const Home = () => {
               />
             </label>
           </LabelContainer>
-          {data?.userMainData.map((user) => (
-            <UserProfile
-              key={user.userId}
-              userId={user.userId}
-              imageSource={`/images/${user.userInfos.firstName}.jpg`}
-              data={user}
-              api={checked}
-            />
-          ))}
+          <Suspense
+            fallback={
+              <>
+                <Loader
+                  type={'spinningBubbles'}
+                  color={'#ff6060'}
+                  width={200}
+                  height={200}
+                />
+              </>
+            }
+          >
+            <Await
+              resolve={data}
+              errorElement={<p>Error loading user data. </p>}
+            >
+              {data?.userMainData.map((user) => (
+                <UserProfile
+                  key={user.userId}
+                  userId={user.userId}
+                  imageSource={`/images/${user.userInfos.firstName}.jpg`}
+                  data={user}
+                  api={checked}
+                />
+              ))}
+            </Await>
+          </Suspense>
         </MainContent>
       </DashboardContainer>
     </>
@@ -98,3 +77,7 @@ const Home = () => {
 };
 
 export default Home;
+
+export function loader() {
+  return getAllDataMocked();
+}
